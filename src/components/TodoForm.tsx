@@ -1,17 +1,21 @@
 import React, {useState} from 'react';
 
-export const TodoForm: React.FunctionComponent = () => {
+interface todoFormProps {onAdd(title: string): void};
+
+export const TodoForm: React.FunctionComponent<todoFormProps> = props => {
   const [title, setTitle] = useState<string>('');
 
   const changer = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
   };
+
   const enterTodo = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter') {
-      console.log(title);
+      props.onAdd(title)
       setTitle('');
     }
   };
+
   return (
     <div className='input-field'>
       <input
