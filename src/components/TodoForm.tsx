@@ -1,9 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 export const TodoForm: React.FunctionComponent = () => {
+  const [title, setTitle] = useState<string>('');
+
+  const changer = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.target.value);
+  };
+  const enterTodo = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      console.log(title);
+      setTitle('');
+    }
+  };
   return (
     <div className='input-field'>
-      <input type='text' id='title' />
+      <input
+        type='text' id='title'
+        onChange={changer}
+        value={title}
+        onKeyPress={enterTodo}
+      />
       <label htmlFor='title' className='active'>
         Enter smthng
       </label>
