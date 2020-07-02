@@ -1,3 +1,5 @@
 import React from 'react';
 
-export default () => <>x</>;
+const App: React.FunctionComponent = () => <>x</>
+
+export default App;
